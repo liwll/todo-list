@@ -1,0 +1,26 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#project-panel {
+    margin: 20px 10px;
+}
+
+#project-btn {
+    float: left;
+    margin-right: 20px;
+}
+
+#tabs {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.tab {
+    height: 30px;
+    width: 15%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid gray;
+    border-radius: 15px;
+    cursor: pointer;
+}
