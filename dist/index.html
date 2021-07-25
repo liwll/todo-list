@@ -10,11 +10,13 @@
 <body>
     <div id="app">
         <header id="header">
-            <span id="name">To. Do.</span>
+            <span id="header-text">To. Do.</span>
         </header>
         <div id="sidebar">
-            <span id="name-2">Lists</span>
-            <button id="add-list">+</button>
+            <div id="sidebar-top">
+                <span id="side-text">Lists</span>
+                <ion-icon id="add-list" name="add-circle"></ion-icon>
+            </div>
             <div id="lists">
                 <div class="list">
                     List 1
@@ -27,13 +29,31 @@
                 </div>
             </div>
         </div>
-        <div id="list">
-            asdf
+        <div id="todo-container">
+            <div id="todo-list">
+                <div id="list-settings">
+                    <div>Title of List</div>
+                    <ion-icon id="edit-list" name="pencil"></ion-icon>
+                </div>
+                <div class="item">
+                    <ion-icon id="checkbox" name="checkmark-circle-outline"></ion-icon>
+                    <span class="item-name">
+                        Read Book
+                    </span>
+                    <ion-icon id="due-date"name="calendar-clear-outline"></ion-icon>
+                    <!-- Expand
+                    Description
+                    Delete
+                    Edit -->
+                </div>
+            </div>
         </div>
     </div>
     
     <div id="footer"></div>
     <div id="content"></div>
     <script src="main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
