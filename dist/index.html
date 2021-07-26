@@ -15,7 +15,7 @@
         <div id="sidebar">
             <div id="sidebar-top">
                 <span id="side-text">Lists</span>
-                <ion-icon id="add-list" name="add-circle"></ion-icon>
+                <ion-icon id="add-icon" name="add-circle"></ion-icon>
             </div>
             <div id="lists">
                 <div class="list">
@@ -33,14 +33,22 @@
             <div id="todo-list">
                 <div id="list-settings">
                     <div>Title of List</div>
-                    <ion-icon id="edit-list" name="pencil"></ion-icon>
+                    <ion-icon id="edit-icon" name="pencil"></ion-icon>
                 </div>
                 <div class="item">
-                    <ion-icon id="checkbox" name="checkmark-circle-outline"></ion-icon>
-                    <span class="item-name">
-                        Read Book
-                    </span>
-                    <ion-icon id="due-date"name="calendar-clear-outline"></ion-icon>
+                    <div class="item-left">
+                        <ion-icon id="check-icon" name="checkmark-circle-outline"></ion-icon>
+                        <span class="item-name">
+                            Finish Coding Project
+                        </span>
+                    </div>
+                    <div class="item-right">
+                        <span class="date-text">
+                            3 weeks
+                        </span>
+                        <ion-icon id="date-icon"name="calendar-clear-outline"></ion-icon>
+                        <ion-icon id="priority-icon" name="ellipse" style="color: red"></ion-icon>
+                    </div>
                     <!-- Expand
                     Description
                     Delete

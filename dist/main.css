@@ -35,7 +35,7 @@ body {
     margin: 20px;
 }
 
-#add-list, #edit-list {
+#add-icon, #edit-icon {
     float: right;
     margin-left: auto;
     cursor: pointer;
@@ -49,14 +49,12 @@ body {
     display: flex;
     align-items: center;
     background: rgb(33, 33, 33);
-    color: rgb(187, 134, 252);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .list:hover {
     background: rgb(37, 31, 45);
-    color: rgb(187, 134, 252);
 }
 
 #todo-container {
@@ -65,7 +63,7 @@ body {
 }
 
 #todo-list {
-    margin: 20px;
+    margin: 20px 15%;
 }
 
 #list-settings {
@@ -73,19 +71,41 @@ body {
     align-items: center;
     font-size: 2em;
     margin-bottom: 20px;
-   
 }
 
 .item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 1.5em;
     padding: 10px;
+    margin: 20px 5%;
     background: rgb(46, 46, 46);
     border-radius: 5px;
 }
 
-#checkbox, #due-date {
-    font-size: 1.5em;
+.item:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.item-left, .item-right {
+    display: flex;
+    align-items: center;
+}
+
+#check-icon {
+    font-size: 2em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#date-icon {
+    font-size: 2em;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.item-name, .date-text {
+    cursor: pointer;
 }
 
