@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 #app {
@@ -10,7 +11,7 @@ body {
 
 #header {
     display: flex;
-    height: 8%;
+    height: 5%;
     padding: 20px;
     align-items: center;
     background: rgb(39, 39, 39);
@@ -42,9 +43,15 @@ body {
     color: rgb(187, 134, 252);
 }
 
+#lists {
+    height: 75%;
+    overflow: auto;
+}
+
 .list {
     height: 1.5em;
-    margin: 20px;
+    margin: 0 20px;
+    margin-bottom: 20px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -62,15 +69,17 @@ body {
     height: 100%;
 }
 
-#todo-list {
-    margin: 20px 15%;
-}
-
 #list-settings {
     display: flex;
     align-items: center;
     font-size: 2em;
-    margin-bottom: 20px;
+    margin: 20px 15%;
+}
+
+#todo-list {
+    height: 75%;
+    margin: 20px 15%;
+    overflow: auto;
 }
 
 .item {
@@ -79,7 +88,8 @@ body {
     justify-content: space-between;
     height: 1.5em;
     padding: 20px;
-    margin: 20px 5%;
+    margin: 0 5%;
+    margin-bottom: 20px;
     background: rgb(46, 46, 46);
     border-radius: 5px;
 }
@@ -112,7 +122,8 @@ body {
 .item-expanded {
     height: fit-content;
     padding: 20px;
-    margin: 20px 5%;
+    margin: 0 5%;
+    margin-bottom: 20px;
     background: rgb(46, 46, 46);
     border-radius: 5px;
 }
@@ -131,3 +142,15 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(39, 39, 39);
+    border-radius: 5px;
+  }
+::-webkit-scrollbar-thumb {
+    background: rgb(187, 134, 252);
+    border-radius: 5px;
+  }
