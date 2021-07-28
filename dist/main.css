@@ -131,7 +131,7 @@ body {
     margin-right: 10px;
 }
 
-.date {
+.item-name, .date {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -140,13 +140,17 @@ body {
     padding: 10px;
 }
 
+.item-name {
+    padding: 1em;
+}
+
 #del-icon {
     font-size: 2em;
     cursor: pointer;
     margin-left: 10px;
 }
 
-#check-icon,.item-name {
+#check-icon {
     cursor: pointer;
 }
 
@@ -161,6 +165,9 @@ body {
 
 .description {
     margin: 20px auto;
+    background: var(--bg-color-1);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .description-btn {
