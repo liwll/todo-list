@@ -1,3 +1,17 @@
+:root {
+    --text-color: rgb(224, 224, 224);
+    --text-color-2: rgb(10, 10, 10);
+    --bg-color-1: rgb(33, 33, 33);
+    --bg-color-2: rgb(46, 46, 46);
+    --header-color: rgb(39, 39, 39);
+    --highlight-color: rgba(255, 255, 255, .1);
+    --accent-color: #00ffff;
+    --accent-color-2: #52cccc;
+    --hp-color: #ff4000;
+    --mp-color: #ffbf00;
+    --lp-color: #8000ff;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -5,8 +19,8 @@ body {
 
 #app {
     font-family: 'Rubik', sans-serif;
-    background: rgb(33 33 33);
-    color: rgb(224, 224, 224);
+    background: var(--bg-color-1);
+    color: var(--text-color);
 }
 
 #header {
@@ -14,20 +28,21 @@ body {
     height: 5%;
     padding: 20px;
     align-items: center;
-    background: rgb(39, 39, 39);
+    justify-content: space-between;
+    background: var(--header-color);
+    font-size: 3em;
 }
 
-#header-text {
-    font-size: 3em;
+#github-icon {
+    cursor: pointer;
 }
 
 #sidebar {
     position: absolute;
     height: 100%;
     width: 250px;
-    background: rgb(46, 46, 46);
+    background: var(--bg-color-2);
 }
-
 
 #sidebar-top {
     display: flex;
@@ -36,11 +51,17 @@ body {
     margin: 20px;
 }
 
-#add-icon, #edit-icon {
+#add-circle-icon, #edit-icon {
     float: right;
     margin-left: auto;
     cursor: pointer;
-    color: rgb(187, 134, 252);
+    color: var(--accent-color);
+    transition: ease-in-out 0.2s;
+}
+
+#add-circle-icon:hover, #edit-icon:hover {
+    font-size: 115%;
+    color: var(--accent-color);
 }
 
 #lists {
@@ -55,13 +76,15 @@ body {
     padding: 10px;
     display: flex;
     align-items: center;
-    background: rgb(33, 33, 33);
+    background: var(--bg-color-1);
     border-radius: 5px;
     cursor: pointer;
+    transition: ease-in-out 0.2s;
 }
 
 .list:hover {
-    background: rgb(37, 31, 45);
+    background: var(--accent-color-2);
+    color: var(--bg-color-1);
 }
 
 #todo-container {
@@ -90,12 +113,12 @@ body {
     padding: 20px;
     margin: 0 5%;
     margin-bottom: 20px;
-    background: rgb(46, 46, 46);
+    background: var(--bg-color-2);
     border-radius: 5px;
 }
 
 .item:hover {
-    background-color: rgba(255, 255, 255, .1);
+    background-color: var(--highlight-color);
 }
 
 .item-left, .item-right {
@@ -105,8 +128,16 @@ body {
 
 #check-icon, #date-icon {
     font-size: 2em;
-    cursor: pointer;
     margin-right: 10px;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: var(--bg-color-1);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 #del-icon {
@@ -115,7 +146,7 @@ body {
     margin-left: 10px;
 }
 
-.item-name, .date-text {
+#check-icon,.item-name {
     cursor: pointer;
 }
 
@@ -124,7 +155,7 @@ body {
     padding: 20px;
     margin: 0 5%;
     margin-bottom: 20px;
-    background: rgb(46, 46, 46);
+    background: var(--bg-color-2);
     border-radius: 5px;
 }
 
@@ -137,20 +168,25 @@ body {
     height: 1em;
     margin-right: 10px;
     padding: 10px;
-    color: rgb(46, 46, 46);
-    background: rgb(224, 224, 224);
+    color: var(--bg-color-2);
+    background: var(--text-color);
     border-radius: 5px;
     cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
+
+.description-btn:hover {
+    background-color: var(--accent-color-2);
 }
 
 ::-webkit-scrollbar {
     width: 5px;
 }
 ::-webkit-scrollbar-track {
-    background: rgb(39, 39, 39);
+    background: var(--header-color);
     border-radius: 5px;
   }
 ::-webkit-scrollbar-thumb {
-    background: rgb(187, 134, 252);
+    background: var(--accent-color);
     border-radius: 5px;
   }
