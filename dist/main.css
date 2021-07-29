@@ -6,7 +6,7 @@
     --header-color: rgb(39, 39, 39);
     --highlight-color: rgba(255, 255, 255, .1);
     --accent-color: #00ffff;
-    --accent-color-2: #52cccc;
+    --accent-color-2: #2ee6e6;
     --hp-color: #ff4000;
     --mp-color: #ffbf00;
     --lp-color: #8000ff;
@@ -23,6 +23,17 @@ body {
     color: var(--text-color);
 }
 
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 1em 'Rubik', sans-serif;
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 #header {
     display: flex;
     height: 5%;
@@ -35,6 +46,10 @@ body {
 
 #github-icon {
     cursor: pointer;
+}
+
+a {
+    color: var(--text-color);
 }
 
 #sidebar {
@@ -70,15 +85,12 @@ body {
 }
 
 .list {
-    height: 1.5em;
-    margin: 0 20px;
+    height: 2.7em;
+    width: 80%;
+    margin: 0 auto;
     margin-bottom: 20px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
+    padding: 20px;
     background: var(--bg-color-1);
-    border-radius: 5px;
-    cursor: pointer;
     transition: ease-in-out 0.2s;
 }
 
@@ -154,6 +166,10 @@ body {
     cursor: pointer;
 }
 
+#check-icon:hover, #del-icon:hover {
+    color: var(--accent-color-2);
+}
+
 .item-expanded {
     height: fit-content;
     padding: 20px;
@@ -172,31 +188,38 @@ body {
 
 .description-btn {
     display: inline-block;  
-    height: 1em;
+    height: 2.5em;
+    width: 5em;
     margin-right: 10px;
     padding: 10px;
-    color: var(--bg-color-2);
-    background: var(--text-color);
+    background: var(--bg-color-1);
     border-radius: 5px;
     cursor: pointer;
-    transition: ease-in-out 0.2s;
+}
+
+.description-btn:hover {
+    background: var(--accent-color-2);
+    color: var(--bg-color-1);
 }
 
 #new-task {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 0;
+    width: 90%;
     padding: 20px;
-    margin: 0 5%;
+    margin: 0 auto;
     background: var(--accent-color);
     border-radius: 5px;
     cursor: pointer;
+    transition: ease-in-out 0.05s;
 }
 
 #add-icon {
     font-size: 2em;
     color: var(--bg-color-1);
+}
+
+#new-task:active {
+    transform: scale(0.98, 0.98);
 }
 
 ::-webkit-scrollbar {

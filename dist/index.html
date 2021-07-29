@@ -11,7 +11,7 @@
     <div id="app">
         <header id="header">
             <span id="header-text">To. Do.</span>
-            <ion-icon id="github-icon" name="logo-github"></ion-icon>
+            <a href="https://github.com/liwll"><ion-icon id="github-icon" name="logo-github"></ion-icon></a>
         </header>
         <div id="sidebar">
             <div id="sidebar-top">
@@ -19,54 +19,42 @@
                 <ion-icon id="add-circle-icon" name="add-circle"></ion-icon>
             </div>
             <div id="lists">
-                <div class="list">
+                <button class="list">
                     List 1
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 2
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 3
-                </div>
-                <div class="list">
+                </dibuttonv>
+                <button class="list">
                     List 4
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 5
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 6
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 7
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 8
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 9
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 0
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 1
-                </div>
-                <div class="list">
+                </button>
+                <button class="list">
                     List 2
-                </div>
-                <div class="list">
-                    List 3
-                </div>
-                <div class="list">
-                    List 4
-                </div>
-                <div class="list">
-                    List 5
-                </div>
-                <div class="list">
-                    List 6
-                </div>
+                </button>
             </div>
         </div>
         <div id="todo-container">
@@ -78,17 +66,17 @@
                 <div class="item" style="border: 1px solid #ff4000;">
                     <div class="item-left">
                         <ion-icon id="check-icon" name="checkbox"></ion-icon>
-                        <div class="item-name">
+                        <button class="item-name">
                             Finish Coding Project
-                        </div>
+                        </button>
                     </div>
                     <div class="item-right">
-                        <div class="date">
+                        <button class="date">
                             <ion-icon id="date-icon" name="calendar"></ion-icon>
                             <span class="date-text">
                                 08/01/2021
                             </span>
-                        </div>
+                        </button>
                         <ion-icon id="del-icon" name="trash"></ion-icon>
                     </div>
                 </div>
@@ -100,13 +88,47 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Condimentum id venenatis a condimentum vitae sapien pellentesque. Sit amet facilisis magna etiam. Quisque non tellus orci ac auctor. Diam vulputate ut pharetra sit amet aliquam. Nullam vehicula ipsum a arcu cursus. Ultrices in iaculis nunc sed augue lacus viverra vitae. In nulla posuere sollicitudin aliquam. Placerat vestibulum lectus mauris ultrices eros. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Tortor condimentum lacinia quis vel eros donec ac odio. Diam vulputate ut pharetra sit amet aliquam id diam. 
                     </div>
                     <div class="description-btns">
-                        <span class="description-btn">Edit</span>
-                        <span class="description-btn">Hide</span>
+                        <button class="description-btn">Edit</button>
+                        <button class="description-btn">Hide</button>
                     </div>
                 </div>
-                <div id="new-task">
-                    <ion-icon id="add-icon" name="add"></ion-icon>
+                <div class="item" style="border: 1px solid #ffbf00;">
+                    <div class="item-left">
+                        <ion-icon id="check-icon" name="checkbox"></ion-icon>
+                        <button class="item-name">
+                            Study for midterm
+                        </button>
+                    </div>
+                    <div class="item-right">
+                        <button class="date">
+                            <ion-icon id="date-icon" name="calendar"></ion-icon>
+                            <span class="date-text">
+                                08/07/2021
+                            </span>
+                        </button>
+                        <ion-icon id="del-icon" name="trash"></ion-icon>
+                    </div>
                 </div>
+                <div class="item" style="border: 1px solid #8000ff;">
+                    <div class="item-left">
+                        <ion-icon id="check-icon" name="checkbox"></ion-icon>
+                        <button class="item-name">
+                            Read book
+                        </button>
+                    </div>
+                    <div class="item-right">
+                        <button class="date">
+                            <ion-icon id="date-icon" name="calendar"></ion-icon>
+                            <span class="date-text">
+                                08/012/2021
+                            </span>
+                        </button>
+                        <ion-icon id="del-icon" name="trash"></ion-icon>
+                    </div>
+                </div>
+                <button id="new-task">
+                    <ion-icon id="add-icon" name="add"></ion-icon>
+                </button>
             </div>
         </div>
     </div>
