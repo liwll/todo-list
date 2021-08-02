@@ -1,4 +1,4 @@
-import todo from './todo.js';
+import todoListener from './todoListener.js';
 
 const lists = () => {
     const listMap = new Map();
@@ -27,7 +27,7 @@ const lists = () => {
             newList.classList.add('list');
             newList.textContent = newListInput.value;
             //Add listener to button
-            todo(newList);
+            todoListener(newList);
             listMap.set(listIndex, newList.textContent);
             //Add to DOM
             lists.removeChild(lists.lastChild);

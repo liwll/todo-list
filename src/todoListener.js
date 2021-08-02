@@ -1,3 +1,5 @@
+import newTaskListener from "./newTaskListener.js";
+
 const todo = (element) => {
     element.addEventListener('click', () => {
         clearTodo(element);
@@ -6,24 +8,28 @@ const todo = (element) => {
 }
 
 function clearTodo() {
-    const todoList = document.querySelector('#todo-list');
+    const todoList = document.getElementById('todo-list');
     while (todoList.firstChild) (todoList.removeChild(todoList.firstChild));
 }
 
 function renderTodo(title) {
-    const todoList = document.querySelector('#todo-list');
+    const todoList = document.getElementById('todo-list');
     //render title
-    const listTitle = document.querySelector('#list-title');
+    const listTitle = document.getElementById('list-title');
     listTitle.textContent = title;
+    
     //render new-task button
     const newTask = document.createElement('button');
     newTask.id = 'new-task';
+    todoList.appendChild(newTask);
+    newTaskListener();
+
+    //render new-task icon
     const newTaskIcon = document.createElement('ion-icon')
     newTaskIcon.id = 'new-task-icon';
     newTaskIcon.name = 'add';
-    //Add to DOM
     newTask.appendChild(newTaskIcon);
-    todoList.appendChild(newTask);
+    
 }
 
 export default todo;

@@ -129,7 +129,7 @@ a {
     overflow: auto;
 }
 
-.item {
+.task {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -141,21 +141,21 @@ a {
     border-radius: 5px;
 }
 
-.item:hover, .item-expanded:hover {
+.task:hover, .task-expanded:hover {
     background-color: var(--highlight-color);
 }
 
-.item-left, .item-right {
+.task-left, .task-right {
     display: flex;
     align-items: center;
 }
 
-#check-icon, #date-icon {
+.check-icon, .date-icon {
     font-size: 2em;
     margin-right: 10px;
 }
 
-.item-name, .date {
+.task-name, .date {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -164,25 +164,37 @@ a {
     padding: 10px;
 }
 
-.item-name {
+.task-name, .task-name-edit {
     padding: 1em;
 }
 
-#del-icon {
+.task-name-edit {
+    display: flex;
+    align-items: center;
+    background: var(--bg-color-1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.date-edit {
+    background: var(--bg-color-2);
+}
+
+.del-icon {
     font-size: 2em;
     cursor: pointer;
     margin-left: 10px;
 }
 
-#check-icon {
+.check-icon {
     cursor: pointer;
 }
 
-#check-icon:hover, #del-icon:hover {
+.check-icon:hover, .del-icon:hover {
     color: var(--accent-color-2);
 }
 
-.item-expanded {
+.task-expanded {
     height: fit-content;
     padding: 20px;
     margin: 0 5%;
@@ -191,22 +203,62 @@ a {
     border-radius: 5px;
 }
 
-.description {
+.priority-hi {
+    color: var(--hp-color);
+    border: 1px solid var(--hp-color);
+}
+
+.priority-hi:hover {
+    background: var(--hp-color);
+    color: var(--bg-color-1);
+}
+
+.priority-mid {
+    color: var(--mp-color);
+    border: 1px solid var(--mp-color);
+}
+
+.priority-mid:hover {
+    background: var(--mp-color);
+    color: var(--bg-color-1);
+}
+
+.priority-low {
+    color: var(--lp-color);
+    border: 1px solid var(--lp-color);
+}
+
+.priority-low:hover {
+    background: var(--lp-color);
+    color: var(--bg-color-1);
+}
+
+.description, .description-edit {
     margin: 20px auto;
     background: var(--bg-color-1);
     border-radius: 5px;
     padding: 10px;
 }
 
-.description-btn {
+.description-edit {
+    font-size: 1em;
+    width: 100%;
+    height: 10em;
+    font-family: 'Rubik', sans-serif;
+    color: var(--text-color);
+    resize: none;
+}
+
+.description-btn, .priority-hi, .priority-mid, .priority-low {
     display: inline-block;  
     height: 2.5em;
-    width: 5em;
+    width: fit-content;
     margin-right: 10px;
     padding: 10px;
     background: var(--bg-color-1);
     border-radius: 5px;
     cursor: pointer;
+    transition: ease-in-out 0.2s;
 }
 
 .description-btn:hover {
