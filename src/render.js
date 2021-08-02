@@ -51,7 +51,7 @@ const render = () => {
     listTitle.id = 'list-title';
     const editIcon = document.createElement('ion-icon');
     editIcon.id = 'edit-icon';
-    editIcon.setAttribute('name', 'pencil');
+    editIcon.name = 'pencil';
     const todoList = document.createElement('div');
     todoList.id = 'todo-list';
 

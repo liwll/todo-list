@@ -225,7 +225,7 @@ a {
     transition: ease-in-out 0.05s;
 }
 
-#add-icon {
+#new-task-icon {
     font-size: 2em;
     color: var(--bg-color-1);
 }
