@@ -23,14 +23,18 @@ body {
     color: var(--text-color);
 }
 
-button {
+button, input {
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
     font: 1em 'Rubik', sans-serif;
     color: var(--text-color);
     border: none;
     border-radius: 5px;
+}
+
+button {
     cursor: pointer;
 }
 
@@ -66,7 +70,7 @@ a {
     margin: 20px;
 }
 
-#add-circle-icon, #edit-icon {
+#new-list-icon, #edit-icon {
     float: right;
     margin-left: auto;
     cursor: pointer;
@@ -74,7 +78,7 @@ a {
     transition: ease-in-out 0.2s;
 }
 
-#add-circle-icon:hover, #edit-icon:hover {
+#new-list-icon:hover, #edit-icon:hover {
     font-size: 115%;
     color: var(--accent-color);
 }
@@ -97,6 +101,14 @@ a {
 .list:hover {
     background: var(--accent-color-2);
     color: var(--bg-color-1);
+}
+
+.new-list {
+    height: 2.7em;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: var(--bg-color-1);
 }
 
 #todo-container {
