@@ -1,6 +1,6 @@
 import newTaskListener from "./newTaskListener.js";
 
-const todo = (element) => {
+const todoListener = (element) => {
     element.addEventListener('click', () => {
         clearTodo(element);
         renderTodo(element.textContent);
@@ -32,4 +32,4 @@ function renderTodo(title) {
     
 }
 
-export default todo;
+export default todoListener;
