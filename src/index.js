@@ -1,5 +1,5 @@
 import render from './render.js';
-import lists from './lists.js';
+import newListListener from './eventListeners';
 
 render();
-lists();
+newListListener();

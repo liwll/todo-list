@@ -1,8 +1,8 @@
 import Task from './task.js';
 
-class Tasks {
+class List {
     constructor() {
-        this.tasks = [];
+        this.list = [];
     }
     numTasks = 0;
 
@@ -15,4 +15,4 @@ class Tasks {
     }
 }
 
-export default Tasks;
+export default List;

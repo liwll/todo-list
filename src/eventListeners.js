@@ -1,6 +1,6 @@
-import todoListener from './todoListener.js';
+import List from "./list.js";
 
-const lists = () => {
+const newListListener = () => {
     const listMap = new Map();
 
     let listIndex = 0;
@@ -27,7 +27,10 @@ const lists = () => {
             newList.classList.add('list');
             newList.textContent = newListInput.value;
             //Add listener to button
-            todoListener(newList);
+            newList.addEventListener('click', () => {
+                clearTodo();
+                renderTodo(newList.textContent);
+            });
             listMap.set(listIndex, newList.textContent);
             //Add to DOM
             lists.removeChild(lists.lastChild);
@@ -38,4 +41,37 @@ const lists = () => {
     })
 }
 
-export default lists;
+const newTaskListener = (element) => {
+    const tasks = new List();
+
+    element.addEventListener('click', () => {
+        tasks.createTask();
+    });
+}
+
+//Helper functions
+function clearTodo() {
+    const todoList = document.getElementById('todo-list');
+    while (todoList.firstChild) (todoList.removeChild(todoList.firstChild));
+}
+
+function renderTodo(title) {
+    const todoList = document.getElementById('todo-list');
+    //render title
+    const listTitle = document.getElementById('list-title');
+    listTitle.textContent = title;
+    
+    //render new-task button
+    const newTask = document.createElement('button');
+    newTask.id = 'new-task';
+    newTaskListener(newTask);
+    todoList.appendChild(newTask);
+
+    //render new-task icon
+    const newTaskIcon = document.createElement('ion-icon')
+    newTaskIcon.id = 'new-task-icon';
+    newTaskIcon.name = 'add';
+    newTask.appendChild(newTaskIcon);
+}
+
+export default newListListener;

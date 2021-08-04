@@ -153,9 +153,13 @@ a {
     align-items: center;
 }
 
-.check-icon, .date-icon {
+.check-icon {
     font-size: 2em;
     margin-right: 10px;
+}
+
+.date-icon {
+    margin-left: 3em;
 }
 
 .task-name, .date {
@@ -167,9 +171,6 @@ a {
     padding: 10px;
 }
 
-.task-name, .task-name-edit {
-    padding: 1em;
-}
 
 .task-name-edit {
     display: flex;

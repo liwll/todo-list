@@ -63,6 +63,12 @@ class Task {
             const taskName = document.createElement('button');
             taskName.classList.add('task-name');
             taskName.textContent = this.name;
+            taskName.addEventListener('click', () => {
+                while(taskContainer.firstChild) {
+                    taskContainer.removeChild(taskContainer.firstChild);
+                };
+                this.renderExpandedTask();
+            });
             taskLeft.appendChild(taskName);
         }
         
@@ -87,15 +93,15 @@ class Task {
             });
             date.appendChild(dateInput);
         } else {
-            const dateIcon = document.createElement('ion-icon');
-            dateIcon.classList.add('date-icon');
-            dateIcon.name = 'calendar';
-            date.appendChild(dateIcon);
-    
             const dateText = document.createElement('span');
             dateText.classList.add('date-text');
             dateText.textContent = this.date;
             date.appendChild(dateText);
+
+            const dateIcon = document.createElement('ion-icon');
+            dateIcon.classList.add('date-icon');
+            dateIcon.name = 'calendar-clear';
+            date.appendChild(dateIcon);
         }
     
         const delIcon = document.createElement('ion-icon');
@@ -149,7 +155,26 @@ class Task {
             })
             priority.appendChild(priorityLow);
         } else {
-            priority.textContent = this.priority;
+            switch (this.priority) {
+                case 'High':
+                    const priorityHi = document.createElement('button');
+                    priorityHi.classList.add('priority-hi');
+                    priorityHi.textContent = 'High Priority';
+                    priority.appendChild(priorityHi);
+                    break;
+                case 'Mid':
+                    const priorityMid = document.createElement('button');
+                    priorityMid.classList.add('priority-mid');
+                    priorityMid.textContent = 'Mid Priority';
+                    priority.appendChild(priorityMid);
+                    break;
+                case 'Low':
+                    const priorityLow = document.createElement('button');
+                    priorityLow.classList.add('priority-low');
+                    priorityLow.textContent = 'Low Priority';
+                    priority.appendChild(priorityLow);
+                    break;
+            };
         }
     
         if (this.isEditing) {
@@ -180,7 +205,7 @@ class Task {
                 taskContainer.removeChild(taskExpanded);
                 taskContainer.removeChild(task);
                 this.renderExpandedTask();
-            })
+            });
             descriptionBtns.appendChild(finishBtn);
         } else {
             const editBtn = document.createElement('button');
@@ -191,7 +216,7 @@ class Task {
                 taskContainer.removeChild(taskExpanded);
                 taskContainer.removeChild(task);
                 this.renderExpandedTask();
-            })
+            });
             descriptionBtns.appendChild(editBtn);
         }
 
@@ -199,6 +224,9 @@ class Task {
             const hideBtn = document.createElement('button');
             hideBtn.classList.add('description-btn');
             hideBtn.textContent = 'Hide';
+            hideBtn.addEventListener('click', () => {
+                taskContainer.removeChild(taskExpanded);
+            });
             descriptionBtns.appendChild(hideBtn);
         }
     }
