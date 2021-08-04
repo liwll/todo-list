@@ -26,26 +26,24 @@ const newListListener = () => {
             const newList = document.createElement('button');
             newList.classList.add('list');
             newList.textContent = newListInput.value;
+            const list = new List();
+            listMap.set(listIndex, list);
             //Add listener to button
             newList.addEventListener('click', () => {
                 clearTodo();
-                renderTodo(newList.textContent);
+                renderTodo(newList.textContent, list);
             });
-            listMap.set(listIndex, newList.textContent);
             //Add to DOM
             lists.removeChild(lists.lastChild);
             lists.appendChild(newList);
         });
         listIndex++;
-        
-    })
+    });
 }
 
-const newTaskListener = (element) => {
-    const tasks = new List();
-
-    element.addEventListener('click', () => {
-        tasks.createTask();
+const newTaskListener = (newTaskBtn, list) => {
+    newTaskBtn.addEventListener('click', () => {
+        list.createTask();
     });
 }
 
@@ -55,16 +53,21 @@ function clearTodo() {
     while (todoList.firstChild) (todoList.removeChild(todoList.firstChild));
 }
 
-function renderTodo(title) {
+function renderTodo(title, list) {
     const todoList = document.getElementById('todo-list');
     //render title
     const listTitle = document.getElementById('list-title');
     listTitle.textContent = title;
+
+    //render list
+    if (list.getNumTasks() != 0) {
+        list.renderAll();
+    }
     
     //render new-task button
     const newTask = document.createElement('button');
     newTask.id = 'new-task';
-    newTaskListener(newTask);
+    newTaskListener(newTask, list);
     todoList.appendChild(newTask);
 
     //render new-task icon

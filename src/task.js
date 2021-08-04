@@ -18,24 +18,29 @@ class Task {
         this.priority = priority;
         this.description = description;
     }
-    isEditing = true;
-    id = -1;
+    #isEditing = true;
+    #id = -1;
 
     setId(id) {
-        this.id = id;
+        this.#id = id;
     }
 
+    isEditing() {
+        return this.#isEditing;
+    }
+
+    //Container must always be created before rendering task
     createContainer() {
         const todoList = document.getElementById('todo-list');
         const newTask = document.getElementById('new-task');
         const taskContainer = document.createElement('div');
         taskContainer.classList.add('task-container');
-        taskContainer.id = 'task-' + this.id;
+        taskContainer.id = 'task-' + this.#id;
         todoList.insertBefore(taskContainer, newTask);
     }
 
     renderTask() {
-        const taskContainer = document.getElementById(`task-${this.id}`);
+        const taskContainer = document.getElementById(`task-${this.#id}`);
         
         const task = document.createElement('div');
         task.classList.add('task');
@@ -51,7 +56,7 @@ class Task {
         checkIcon.name = 'checkbox';
         taskLeft.appendChild(checkIcon);
     
-        if (this.isEditing) {
+        if (this.#isEditing) {
             const taskName = document.createElement('input');
             taskName.classList.add('task-name-edit');
             taskName.value = this.name === undefined ? '' : this.name;
@@ -81,7 +86,7 @@ class Task {
         date.classList.add('date');
         taskRight.appendChild(date);
     
-        if (this.isEditing) {
+        if (this.#isEditing) {
             const dateInput = document.createElement('input');
             dateInput.classList.add('date-edit');
             dateInput.type = 'date'
@@ -116,7 +121,7 @@ class Task {
         //Render simple view
         const task = this.renderTask();
 
-        const taskContainer = document.getElementById(`task-${this.id}`);
+        const taskContainer = document.getElementById(`task-${this.#id}`);
         //Have to remove and append for correct order
         taskContainer.removeChild(task);
         taskContainer.appendChild(task);
@@ -130,7 +135,7 @@ class Task {
         priority.classList.add('priority');
         taskExpanded.appendChild(priority);
 
-        if (this.isEditing) {
+        if (this.#isEditing) {
             const priorityHi = document.createElement('button');
             priorityHi.classList.add('priority-hi');
             priorityHi.textContent = 'High Priority';
@@ -177,7 +182,7 @@ class Task {
             };
         }
     
-        if (this.isEditing) {
+        if (this.#isEditing) {
             const description = document.createElement('textarea');
             description.classList.add('description-edit');
             description.value = this.description === undefined ? '' : this.description;
@@ -196,12 +201,12 @@ class Task {
         descriptionBtns.classList.add('description-btns');
         taskExpanded.appendChild(descriptionBtns);
     
-        if (this.isEditing) {
+        if (this.#isEditing) {
             const finishBtn = document.createElement('button');
             finishBtn.classList.add('description-btn');
             finishBtn.textContent = 'Finish';
             finishBtn.addEventListener('click', () => {
-                this.isEditing = false;
+                this.#isEditing = false;
                 taskContainer.removeChild(taskExpanded);
                 taskContainer.removeChild(task);
                 this.renderExpandedTask();
@@ -212,7 +217,7 @@ class Task {
             editBtn.classList.add('description-btn');
             editBtn.textContent = 'Edit';
             editBtn.addEventListener('click', () => {
-                this.isEditing = true;
+                this.#isEditing = true;
                 taskContainer.removeChild(taskExpanded);
                 taskContainer.removeChild(task);
                 this.renderExpandedTask();
@@ -220,7 +225,7 @@ class Task {
             descriptionBtns.appendChild(editBtn);
         }
 
-        if (!this.isEditing) {
+        if (!this.#isEditing) {
             const hideBtn = document.createElement('button');
             hideBtn.classList.add('description-btn');
             hideBtn.textContent = 'Hide';
