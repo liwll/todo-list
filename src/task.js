@@ -21,6 +21,10 @@ class Task {
     #isEditing = true;
     #id = -1;
 
+    getId() {
+        return this.#id;
+    }
+
     setId(id) {
         this.#id = id;
     }
@@ -111,7 +115,15 @@ class Task {
     
         const delIcon = document.createElement('ion-icon');
         delIcon.classList.add('del-icon');
+        delIcon.id = `del-${this.#id}`;
         delIcon.name = 'trash';
+        delIcon.addEventListener('click', () => {
+            while (taskContainer.firstChild) {
+                taskContainer.removeChild(taskContainer.firstChild);
+            }
+            taskContainer.parentNode.removeChild(taskContainer);
+            this.setId('deleted');
+        });
         taskRight.appendChild(delIcon);
 
         return task;
