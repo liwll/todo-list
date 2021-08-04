@@ -1,13 +1,11 @@
-import Task from "./task";
+import Tasks from "./tasks.js";
 
-const tasks = [];
+const tasks = new Tasks();
 
 const newTaskListener = () => {
     const newTaskBtn = document.getElementById('new-task');
     newTaskBtn.addEventListener('click', () => {
-        const newTask = new Task();
-        newTask.setIsEditing(true);
-        newTask.renderExpandedTask();
+        tasks.createTask();
     });
 }
 

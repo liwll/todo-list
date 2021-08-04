@@ -18,19 +18,28 @@ class Task {
         this.priority = priority;
         this.description = description;
     }
-    isEditing = false;
+    isEditing = true;
+    id = -1;
 
-    setIsEditing(editing) {
-        this.isEditing = editing;
+    setId(id) {
+        this.id = id;
+    }
+
+    createContainer() {
+        const todoList = document.getElementById('todo-list');
+        const newTask = document.getElementById('new-task');
+        const taskContainer = document.createElement('div');
+        taskContainer.classList.add('task-container');
+        taskContainer.id = 'task-' + this.id;
+        todoList.insertBefore(taskContainer, newTask);
     }
 
     renderTask() {
-        const todoList = document.getElementById('todo-list');
-        const newTask = document.getElementById('new-task');
+        const taskContainer = document.getElementById(`task-${this.id}`);
         
         const task = document.createElement('div');
         task.classList.add('task');
-        todoList.insertBefore(task, newTask);
+        taskContainer.appendChild(task);
         
         //Append elements to left side of task
         const taskLeft = document.createElement('div');
@@ -93,19 +102,23 @@ class Task {
         delIcon.classList.add('del-icon');
         delIcon.name = 'trash';
         taskRight.appendChild(delIcon);
+
+        return task;
     }
 
     renderExpandedTask() {
-        const todoList = document.getElementById('todo-list');
-        const newTask = document.getElementById('new-task');
-    
         //Render simple view
-        this.renderTask();
-    
+        const task = this.renderTask();
+
+        const taskContainer = document.getElementById(`task-${this.id}`);
+        //Have to remove and append for correct order
+        taskContainer.removeChild(task);
+        taskContainer.appendChild(task);
+
         //Render expanded view
         const taskExpanded = document.createElement('div');
         taskExpanded.classList.add('task-expanded');
-        todoList.insertBefore(taskExpanded, newTask);
+        taskContainer.appendChild(taskExpanded);
     
         const priority = document.createElement('div');
         priority.classList.add('priority');
@@ -151,6 +164,7 @@ class Task {
             const description = document.createElement('div');
             description.classList.add('description');
             description.textContent = this.description;
+            taskExpanded.appendChild(description);
         }
     
         const descriptionBtns = document.createElement('div');
@@ -162,14 +176,23 @@ class Task {
             finishBtn.classList.add('description-btn');
             finishBtn.textContent = 'Finish';
             finishBtn.addEventListener('click', () => {
-                console.log(this);
+                this.isEditing = false;
+                taskContainer.removeChild(taskExpanded);
+                taskContainer.removeChild(task);
+                this.renderExpandedTask();
             })
             descriptionBtns.appendChild(finishBtn);
         } else {
-            const hideBtn = document.createElement('button');
-            hideBtn.classList.add('description-btn');
-            hideBtn.textContent = 'Edit';
-            descriptionBtns.appendChild(hideBtn);
+            const editBtn = document.createElement('button');
+            editBtn.classList.add('description-btn');
+            editBtn.textContent = 'Edit';
+            editBtn.addEventListener('click', () => {
+                this.isEditing = true;
+                taskContainer.removeChild(taskExpanded);
+                taskContainer.removeChild(task);
+                this.renderExpandedTask();
+            })
+            descriptionBtns.appendChild(editBtn);
         }
 
         if (!this.isEditing) {

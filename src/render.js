@@ -49,16 +49,12 @@ const render = () => {
     listSettings.id = 'list-settings';
     const listTitle = document.createElement('div');
     listTitle.id = 'list-title';
-    const editIcon = document.createElement('ion-icon');
-    editIcon.id = 'edit-icon';
-    editIcon.name = 'pencil';
     const todoList = document.createElement('div');
     todoList.id = 'todo-list';
 
     app.appendChild(todoContainer);
     todoContainer.appendChild(listSettings);
     listSettings.appendChild(listTitle);
-    listSettings.appendChild(editIcon);
     todoContainer.appendChild(todoList);
 }
 

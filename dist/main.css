@@ -129,6 +129,10 @@ a {
     overflow: auto;
 }
 
+.task-container {
+    margin-bottom: 20px;
+}
+
 .task {
     display: flex;
     align-items: center;
@@ -136,7 +140,6 @@ a {
     height: 1.5em;
     padding: 20px;
     margin: 0 5%;
-    margin-bottom: 20px;
     background: var(--bg-color-2);
     border-radius: 5px;
 }
@@ -198,7 +201,6 @@ a {
     height: fit-content;
     padding: 20px;
     margin: 0 5%;
-    margin-bottom: 20px;
     background: var(--bg-color-2);
     border-radius: 5px;
 }
