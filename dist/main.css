@@ -353,6 +353,19 @@ a {
     color: var(--bg-color-1);
 }
 
+.description-btns {
+    display: flex;
+    align-items: center;
+}
+
+.error-message {
+    display: inline-block;
+    margin-left: auto;
+    padding: 10px;
+    background: var(--bg-color-1);
+    border-radius: 5px;
+}
+
 #new-task {
     height: 0;
     width: 90%;

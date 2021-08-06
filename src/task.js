@@ -33,6 +33,20 @@ class Task {
         return this.#isEditing;
     }
 
+    checkCompletion() {
+        const fieldsCompleted = [true, true, true];
+        if (!this.name || this.name == '') {
+            fieldsCompleted[0] = false;
+        }
+        if (!this.date) {
+            fieldsCompleted[1] = false;
+        }
+        if (!this.priority) {
+            fieldsCompleted[2] = false;
+        }
+        return fieldsCompleted;
+    }
+
     //Container must always be created before rendering task
     createContainer() {
         const todoList = document.getElementById('todo-list');
@@ -235,10 +249,27 @@ class Task {
             finishBtn.classList.add('description-btn');
             finishBtn.textContent = 'Finish';
             finishBtn.addEventListener('click', () => {
-                this.#isEditing = false;
-                taskContainer.removeChild(taskExpanded);
-                taskContainer.removeChild(task);
-                this.renderExpandedTask();
+                const fieldsCompleted = this.checkCompletion();
+                if (!fieldsCompleted[0] | !fieldsCompleted[1] || !fieldsCompleted[2]) {
+                    errorMessage.textContent = 'Please fill out the following fields:';
+                    if (!fieldsCompleted[0]) {
+                        errorMessage.textContent += ' Name,'
+                    }
+                    if (!fieldsCompleted[1]) {
+                        errorMessage.textContent += ' Date,'
+                    }
+                    if (!fieldsCompleted[2]) {
+                        errorMessage.textContent += ' Priority,'
+                    }
+                    errorMessage.textContent = errorMessage.textContent.substring(0, errorMessage.textContent.length - 1);
+                    descriptionBtns.appendChild(errorMessage);
+                }
+                else {
+                    this.#isEditing = false;
+                    taskContainer.removeChild(taskExpanded);
+                    taskContainer.removeChild(task);
+                    this.renderExpandedTask();
+                }
             });
             descriptionBtns.appendChild(finishBtn);
         } else {
@@ -263,6 +294,10 @@ class Task {
             });
             descriptionBtns.appendChild(hideBtn);
         }
+
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('error-message');
+        errorMessage.textContent = '';
     }
 }
 

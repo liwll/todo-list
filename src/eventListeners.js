@@ -37,6 +37,9 @@ const newListListener = () => {
                 lists.removeChild(lists.lastChild);
                 lists.appendChild(listBtn);
             }
+            else {
+                lists.removeChild(lists.lastChild);
+            }
         });
     });
 }
