@@ -57,6 +57,7 @@ const render = () => {
 
     const listTitleEdit = document.createElement('input');
     listTitleEdit.id = 'list-title-edit';
+    listTitleEdit.autocomplete = 'off';
     listHeader.appendChild(listTitleEdit);
 
     const todoList = document.createElement('div');

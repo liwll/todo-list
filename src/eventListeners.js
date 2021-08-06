@@ -6,6 +6,7 @@ const newListListener = () => {
     newListBtn.addEventListener('click', () => {
         const listInput = document.createElement('input');
         listInput.classList.add('new-list');
+        listInput.autocomplete = 'off';
         listInput.value = 'New List';
         lists.appendChild(listInput);
         // focus and select input after appending
@@ -20,20 +21,22 @@ const newListListener = () => {
         // make input become button when blurred
         listInput.addEventListener('blur', (event) => {
             event.preventDefault();
-            const listBtn = document.createElement('button');
-            listBtn.classList.add('list');
-            listBtn.textContent = listInput.value;
-            const list = new List(listInput.value);
-            //Add listener to button
-            listBtn.addEventListener('click', () => {
-                clearTodo();
-                renderTodo(list);
-                listTitleListener(list, listBtn);
-                newTaskListener(list);
-            });
-            //Add to DOM
-            lists.removeChild(lists.lastChild);
-            lists.appendChild(listBtn);
+            if (listInput.value != '') {
+                const listBtn = document.createElement('button');
+                listBtn.classList.add('list');
+                listBtn.textContent = listInput.value;
+                const list = new List(listInput.value);
+                //Add listener to button
+                listBtn.addEventListener('click', () => {
+                    clearTodo();
+                    renderTodo(list);
+                    listTitleListener(list, listBtn);
+                    newTaskListener(list);
+                });
+                //Add to DOM
+                lists.removeChild(lists.lastChild);
+                lists.appendChild(listBtn);
+            }
         });
     });
 }
@@ -62,9 +65,11 @@ function listTitleListener(list, listBtn) {
         }
         listTitleEdit.onblur = (event) => {
             event.preventDefault();
-            list.setName(listTitleEdit.value);
-            listTitle.textContent = list.getName();
-            listBtn.textContent = list.getName();
+            if (listTitleEdit.value != '') {
+                list.setName(listTitleEdit.value);
+                listTitle.textContent = list.getName();
+                listBtn.textContent = list.getName();
+            }
             listTitleEdit.style = 'display: none'
             listTitle.style = 'display: block'
         }
