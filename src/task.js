@@ -18,6 +18,7 @@ class Task {
         this.priority = priority;
         this.description = description;
     }
+    #display = 'none';
     #isEditing = true;
     #id = -1;
 
@@ -58,6 +59,7 @@ class Task {
     }
 
     renderTask() {
+        this.#display = 'simple';
         const taskContainer = document.getElementById(`task-${this.#id}`);
         
         const task = document.createElement('div');
@@ -91,7 +93,12 @@ class Task {
                 while(taskContainer.firstChild) {
                     taskContainer.removeChild(taskContainer.firstChild);
                 };
-                this.renderExpandedTask();
+                if (this.#display === 'simple') {
+                    this.renderExpandedTask();
+                } else {
+                    this.renderTask();
+                }
+
             });
             taskLeft.appendChild(taskName);
         }
@@ -147,6 +154,7 @@ class Task {
     renderExpandedTask() {
         //Render simple view
         const task = this.renderTask();
+        this.#display = 'expanded';
 
         const taskContainer = document.getElementById(`task-${this.#id}`);
         //Have to remove and append for correct order
@@ -165,7 +173,7 @@ class Task {
 
         if (this.#isEditing) {
             const priorityHi = document.createElement('button');
-            priorityHi.classList.add('priority-hi');
+            this.priority === 'hi' ? priorityHi.className = 'priority-hi-active' : priorityHi.className = 'priority-hi';
             priorityHi.textContent = 'High Priority';
             priorityHi.addEventListener('click', () => {
                 this.priority = 'hi';
@@ -178,7 +186,7 @@ class Task {
             priority.appendChild(priorityHi);
         
             const priorityMid = document.createElement('button');
-            priorityMid.classList.add('priority-mid');
+            this.priority === 'mid' ? priorityMid.className = 'priority-mid-active' : priorityMid.className = 'priority-mid';
             priorityMid.textContent = 'Mid Priority';
             priorityMid.addEventListener('click', () => {
                 this.priority = 'mid';
@@ -191,7 +199,7 @@ class Task {
             priority.appendChild(priorityMid);
         
             const priorityLow = document.createElement('button');
-            priorityLow.classList.add('priority-low');
+            this.priority === 'low' ? priorityLow.className = 'priority-low-active' : priorityLow.className = 'priority-low';
             priorityLow.textContent = 'Low Priority';
             priorityLow.addEventListener('click', () => {
                 this.priority = 'low';
@@ -206,19 +214,19 @@ class Task {
             switch (this.priority) {
                 case 'hi':
                     const priorityHi = document.createElement('button');
-                    priorityHi.classList.add('priority-hi-active');
+                    priorityHi.className = 'priority-hi-active';
                     priorityHi.textContent = 'High Priority';
                     priority.appendChild(priorityHi);
                     break;
                 case 'mid':
                     const priorityMid = document.createElement('button');
-                    priorityMid.classList.add('priority-mid-active');
+                    priorityMid.className = 'priority-mid-active';
                     priorityMid.textContent = 'Mid Priority';
                     priority.appendChild(priorityMid);
                     break;
                 case 'low':
                     const priorityLow = document.createElement('button');
-                    priorityLow.classList.add('priority-low-active');
+                    priorityLow.className = 'priority-low-active';
                     priorityLow.textContent = 'Low Priority';
                     priority.appendChild(priorityLow);
                     break;

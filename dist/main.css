@@ -129,6 +129,7 @@ a {
 
 #list-title-edit {
     display: none;
+    background: var(--bg-color-1);
 }
 
 #todo-list {
