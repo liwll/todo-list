@@ -45,16 +45,22 @@ const render = () => {
     //render todo-list
     const todoContainer = document.createElement('div');
     todoContainer.id = 'todo-container';
-    const listSettings = document.createElement('div');
-    listSettings.id = 'list-settings';
+    app.appendChild(todoContainer);
+
+    const listHeader = document.createElement('div');
+    listHeader.id = 'list-header';
+    todoContainer.appendChild(listHeader);
+
     const listTitle = document.createElement('div');
     listTitle.id = 'list-title';
+    listHeader.appendChild(listTitle);
+
+    const listTitleEdit = document.createElement('input');
+    listTitleEdit.id = 'list-title-edit';
+    listHeader.appendChild(listTitleEdit);
+
     const todoList = document.createElement('div');
     todoList.id = 'todo-list';
-
-    app.appendChild(todoContainer);
-    todoContainer.appendChild(listSettings);
-    listSettings.appendChild(listTitle);
     todoContainer.appendChild(todoList);
 }
 

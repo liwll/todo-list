@@ -1,63 +1,82 @@
 import List from "./list.js";
 
 const newListListener = () => {
-    const listMap = new Map();
-
-    let listIndex = 0;
     const lists = document.getElementById('lists');
     const newListBtn = document.getElementById('new-list-icon');
     newListBtn.addEventListener('click', () => {
-        const newListInput = document.createElement('input');
-        newListInput.classList.add('new-list');
-        newListInput.value = 'New List';
-        lists.appendChild(newListInput);
+        const listInput = document.createElement('input');
+        listInput.classList.add('new-list');
+        listInput.value = 'New List';
+        lists.appendChild(listInput);
         // focus and select input after appending
-        newListInput.focus();
-        newListInput.select();
+        listInput.focus();
+        listInput.select();
         // make input blur when escape or enter is pressed
-        newListInput.addEventListener('keyup', (event) => {
+        listInput.addEventListener('keyup', (event) => {
             if (event.key === 'Escape' || event.key === "Enter") {
-                newListInput.blur();
+                listInput.blur();
             }
         });
         // make input become button when blurred
-        newListInput.addEventListener('blur', (event) => {
+        listInput.addEventListener('blur', (event) => {
             event.preventDefault();
-            const newList = document.createElement('button');
-            newList.classList.add('list');
-            newList.textContent = newListInput.value;
-            const list = new List();
-            listMap.set(listIndex, list);
+            const listBtn = document.createElement('button');
+            listBtn.classList.add('list');
+            listBtn.textContent = listInput.value;
+            const list = new List(listInput.value);
             //Add listener to button
-            newList.addEventListener('click', () => {
+            listBtn.addEventListener('click', () => {
                 clearTodo();
-                renderTodo(newList.textContent, list);
+                renderTodo(list);
+                listTitleListener(list, listBtn);
+                newTaskListener(list);
             });
             //Add to DOM
             lists.removeChild(lists.lastChild);
-            lists.appendChild(newList);
+            lists.appendChild(listBtn);
         });
-        listIndex++;
     });
 }
 
-const newTaskListener = (newTaskBtn, list) => {
+const newTaskListener = (list) => {
+    const newTaskBtn= document.getElementById('new-task');
     newTaskBtn.addEventListener('click', () => {
         list.createTask();
     });
 }
 
-//Helper functions
-function clearTodo() {
-    const todoList = document.getElementById('todo-list');
-    while (todoList.firstChild) (todoList.removeChild(todoList.firstChild));
+function listTitleListener(list, listBtn) {
+    const listTitle = document.getElementById('list-title');
+    const listTitleEdit = document.getElementById('list-title-edit');
+    
+    listTitle.onclick = () => {
+        listTitle.style = 'display: none'
+        listTitleEdit.value = list.getName();
+        listTitleEdit.style = 'display: block'
+        listTitleEdit.focus();
+        listTitleEdit.select();
+        listTitleEdit.onkeyup = (event) => {
+            if (event.key === 'Escape' || event.key === "Enter") {
+                listTitleEdit.blur();
+            }
+        }
+        listTitleEdit.onblur = (event) => {
+            event.preventDefault();
+            list.setName(listTitleEdit.value);
+            listTitle.textContent = list.getName();
+            listBtn.textContent = list.getName();
+            listTitleEdit.style = 'display: none'
+            listTitle.style = 'display: block'
+        }
+    }
 }
 
-function renderTodo(title, list) {
+function renderTodo(list) {
     const todoList = document.getElementById('todo-list');
+
     //render title
     const listTitle = document.getElementById('list-title');
-    listTitle.textContent = title;
+    listTitle.textContent = list.getName();
 
     //render list
     if (list.getNumTasks() != 0) {
@@ -67,7 +86,6 @@ function renderTodo(title, list) {
     //render new-task button
     const newTask = document.createElement('button');
     newTask.id = 'new-task';
-    newTaskListener(newTask, list);
     todoList.appendChild(newTask);
 
     //render new-task icon
@@ -75,6 +93,12 @@ function renderTodo(title, list) {
     newTaskIcon.id = 'new-task-icon';
     newTaskIcon.name = 'add';
     newTask.appendChild(newTaskIcon);
+}
+
+//Helper functions
+function clearTodo() {
+    const todoList = document.getElementById('todo-list');
+    while (todoList.firstChild) (todoList.removeChild(todoList.firstChild));
 }
 
 export default newListListener;

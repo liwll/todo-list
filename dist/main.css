@@ -116,11 +116,19 @@ a {
     height: 100%;
 }
 
-#list-settings {
+#list-header {
     display: flex;
     align-items: center;
     font-size: 2em;
     margin: 20px 15%;
+}
+
+#list-title {
+    cursor: pointer;
+}
+
+#list-title-edit {
+    display: none;
 }
 
 #todo-list {
@@ -143,7 +151,7 @@ a {
     background: var(--bg-color-2);
     border: 1px solid var(--bg-color-2);
     border-radius: 5px;
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
 .task-hi {
@@ -156,7 +164,7 @@ a {
     background: var(--bg-color-2);
     border-radius: 5px;
     border: 1px solid var(--hp-color);
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
 .task-mid {
@@ -169,7 +177,7 @@ a {
     background: var(--bg-color-2);
     border-radius: 5px;
     border: 1px solid var(--mp-color);
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
 .task-low {
@@ -182,10 +190,10 @@ a {
     background: var(--bg-color-2);
     border-radius: 5px;
     border: 1px solid var(--lp-color);
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
-.task:hover, .task-expanded:hover {
+.task:hover, .task-expanded:hover, .task-hi:hover, .task-mid:hover, .task-low:hover, .task-expanded-hi:hover, .task-expanded-mid:hover, .task-expanded-low:hover {
     background-color: var(--highlight-color);
 }
 
@@ -246,7 +254,6 @@ a {
     background: var(--bg-color-2);
     border-radius: 5px;
     border: 1px solid var(--bg-color-2);
-    transition: ease-in-out 0.5s;
 }
 
 .task-expanded-hi {
@@ -257,7 +264,7 @@ a {
     border-radius: 5px;
     border: 1px solid var(--hp-color);
     border-top: 0;
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
 .task-expanded-mid {
@@ -268,7 +275,7 @@ a {
     border-radius: 5px;
     border: 1px solid var(--mp-color);
     border-top: 0;
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
 .task-expanded-low {
@@ -279,7 +286,7 @@ a {
     border-radius: 5px;
     border: 1px solid var(--lp-color);
     border-top: 0;
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.2s;
 }
 
 .description, .description-edit {

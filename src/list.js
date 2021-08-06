@@ -1,10 +1,19 @@
 import Task from './task.js';
 
 class List {
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.tasks = [];
     }
     currentId = 0;
+
+    getName() {
+        return this.name;
+    }
+
+    setName(name) {
+        this.name = name;
+    } 
 
     getNumTasks() {
         return this.tasks.length;
