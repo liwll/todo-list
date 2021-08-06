@@ -20,6 +20,8 @@ class Task {
     }
     #display = 'none';
     #isEditing = true;
+    #isDeleted = false;
+    #isCompleted = false;
     #id = -1;
 
     getId() {
@@ -32,6 +34,14 @@ class Task {
 
     isEditing() {
         return this.#isEditing;
+    }
+
+    isDeleted() {
+        return this.#isDeleted;
+    }
+
+    isCompleted() {
+        return this.#isCompleted;
     }
 
     checkCompletion() {
@@ -75,6 +85,13 @@ class Task {
         const checkIcon = document.createElement('ion-icon');
         checkIcon.classList.add('check-icon');
         checkIcon.name = 'checkbox';
+        checkIcon.addEventListener('click', () => {
+            while (taskContainer.firstChild) {
+                taskContainer.removeChild(taskContainer.firstChild);
+            }
+            taskContainer.parentNode.removeChild(taskContainer);
+            this.#isCompleted = true;
+        })
         taskLeft.appendChild(checkIcon);
     
         if (this.#isEditing) {
@@ -144,7 +161,7 @@ class Task {
                 taskContainer.removeChild(taskContainer.firstChild);
             }
             taskContainer.parentNode.removeChild(taskContainer);
-            this.setId('deleted');
+            this.#isDeleted = true;
         });
         taskRight.appendChild(delIcon);
 

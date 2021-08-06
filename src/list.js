@@ -4,6 +4,7 @@ class List {
     constructor(name) {
         this.name = name;
         this.tasks = [];
+        this.completed = [];
     }
     currentId = 0;
 
@@ -30,12 +31,22 @@ class List {
 
     filterDeletedTasks() {
         this.tasks = this.tasks.filter((task) => {
-            return task.getId() !== 'deleted';
+            return !task.isDeleted();
         });
+    }
+
+    filterCompletedTasks() {
+        this.completed = this.tasks.filter((task) => {
+            return task.isCompleted();
+        });
+        this.tasks = this.tasks.filter((task) => {
+            return !task.isCompleted();
+        })
     }
 
     renderAll() {
         this.filterDeletedTasks();
+        this.filterCompletedTasks();
         this.tasks.forEach((task) => {
             task.createContainer();
             task.isEditing() ? task.renderExpandedTask() : task.renderTask();
