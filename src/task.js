@@ -85,13 +85,15 @@ class Task {
         const checkIcon = document.createElement('ion-icon');
         checkIcon.classList.add('check-icon');
         checkIcon.name = 'checkbox';
-        checkIcon.addEventListener('click', () => {
-            while (taskContainer.firstChild) {
-                taskContainer.removeChild(taskContainer.firstChild);
-            }
-            taskContainer.parentNode.removeChild(taskContainer);
-            this.#isCompleted = true;
-        })
+        if (!this.#isEditing) {
+            checkIcon.addEventListener('click', () => {
+                while (taskContainer.firstChild) {
+                    taskContainer.removeChild(taskContainer.firstChild);
+                }
+                taskContainer.parentNode.removeChild(taskContainer);
+                this.#isCompleted = true;
+            });
+        }
         taskLeft.appendChild(checkIcon);
     
         if (this.#isEditing) {
